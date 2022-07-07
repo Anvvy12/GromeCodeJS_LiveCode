@@ -13,7 +13,8 @@
 const filterArrayElements = (arr, callback) => {
   const resArr = [];
   for (let index = 0; index < arr.length; index += 1) {
-    if (callback(arr[index])) {
+    const el = callback(arr[index]);
+    if (callback(el, index, arr)) {
       resArr.push(arr[index]);
     }
   }
@@ -38,3 +39,12 @@ const testCallback = (el, index, arr) => {
 };
 
 console.log(filterArrayElements(testArr, testCallback));
+
+//----------------------
+
+function multiply(...args) {
+  console.log(args);
+  return args.reduce((acc, el) => acc * el);
+}
+
+console.log(multiply(10, 7, 6));
