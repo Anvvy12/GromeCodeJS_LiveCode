@@ -23,14 +23,13 @@ const customers = {
 
 const getCustomersList = (obj) => {
   const keysArr = Object.keys(obj);
-  const resArr = Object.values(obj);
+  const entriesCust = Object.values(customers);
 
-  resArr.map((elem, index) => Object.assign(elem, { id: keysArr[index] }));
-  resArr.sort((a, b) => a.age - b.age);
-  console.log(obj);
-  return resArr;
+  const res1 = entriesCust.map((elem) => Object.assign({}, elem));
+  res1.map((elem, index) => Object.assign((elem.id = keysArr[index])));
+  res1.sort((a, b) => a.age - b.age);
+  return res1;
 };
 
-const res = getCustomersList(customers);
-console.log(res);
+console.log(getCustomersList(customers));
 console.log(customers);
